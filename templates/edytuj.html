@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edytuj Film</title>
+    <style>
+        body {
+            background-color: #6495ED;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>BIBLIOTEKA FILMÓW</h1>
+    <form action="/zapisz_edycje" method="post">
+        <input type="hidden" name="film_id" value="{{ film.id }}">
+        <label for="tytul">Nowy Tytuł:</label><br>
+        <input type="text" id="tytul" name="tytul" value="{{ film.tytul }}"><br>
+        <label for="rok_wydania">Nowy Rok Wydania:</label><br>
+        <input type="number" id="rok_wydania" name="rok_wydania" value="{{ film.rok_wydania }}"><br>
+        <label for="gatunek">Nowy Gatunek:</label><br>
+        <input type="text" id="gatunek" name="gatunek" value="{{ film.gatunek }}"><br><br>
+        <button type="submit">Zapisz Edycję</button>
+    </form>
+</body>
+</html>

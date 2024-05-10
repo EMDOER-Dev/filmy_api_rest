@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteka Filmów</title>
+    <style>
+        body {
+            background-color: #6495ED
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>BIBLIOTEKA FILMÓW</h1>
+    <form action="/dodaj_film" method="post">
+        <label for="tytul">Tytuł:</label><br>
+        <input type="text" id="tytul" name="tytul"><br>
+        <label for="rok_wydania">Rok wydania:</label><br>
+        <input type="number" id="rok_wydania" name="rok_wydania"><br>
+        <label for="gatunek">Gatunek:</label><br>
+        <input type="text" id="gatunek" name="gatunek"><br><br>
+        <button type="submit">Dodaj Film</button>
+    </form>
+    <ul>
+        {% for film in filmy %}
+            <li>
+                {{ film.tytul }} ({{ film.rok_wydania }}) - {{ film.gatunek }}
+                <form action="/usun_film/{{ film.id }}" method="post">
+                    <button type="submit">Usuń</button>
+                </form>
+                <form action="/edytuj_film/{{ film.id }}" method="get">
+                    <button type="submit">Edytuj</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
